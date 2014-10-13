@@ -3,7 +3,10 @@ package ru.vvaadd.qrlearning;
 import com.google.zxing.WriterException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import ru.vvaadd.qrlearning.model.QRModel;
+import ru.vvaadd.qrlearning.helpers.PngHelper;
+import ru.vvaadd.qrlearning.models.QRModel;
+import ru.vvaadd.qrlearning.renderers.IQRRenderer;
+import ru.vvaadd.qrlearning.renderers.QRSimpleRenderer;
 
 import java.awt.*;
 import java.io.IOException;
@@ -28,8 +31,9 @@ public class MainClass {
         model.setColor(new Color(51, 102, 153, 100));
 
         PngHelper pngHelper = new PngHelper();
+        IQRRenderer renderer = new QRSimpleRenderer();
         try {
-            pngHelper.create(model, resultFile);
+            pngHelper.create(model, resultFile, renderer);
         } catch (IOException e) {
             e.printStackTrace();
         } catch (WriterException e) {

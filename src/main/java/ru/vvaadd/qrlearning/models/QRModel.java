@@ -1,4 +1,4 @@
-package ru.vvaadd.qrlearning.model;
+package ru.vvaadd.qrlearning.models;
 
 import java.awt.*;
 

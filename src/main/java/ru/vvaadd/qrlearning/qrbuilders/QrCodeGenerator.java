@@ -84,16 +84,18 @@ public class QrCodeGenerator {
 
         //scale logo image and insert it to center of QR-code
         BufferedImage logo = ImageUtils.getImageFromFile(qrModel.getLogoPath());
-        double scale = calcScaleRate(image, logo);
-        logo = getScaledImage(logo,
-                (int) (logo.getWidth() * scale),
-                (int) (logo.getHeight() * scale));
-        graphics.drawImage(logo,
-                image.getWidth() / 2 - logo.getWidth() / 2,
-                image.getHeight() / 2 - logo.getHeight() / 2,
-                image.getWidth() / 2 + logo.getWidth() / 2,
-                image.getHeight() / 2 + logo.getHeight() / 2,
-                0, 0, logo.getWidth(), logo.getHeight(), null);
+        if (logo != null) {
+            double scale = calcScaleRate(image, logo);
+            logo = getScaledImage(logo,
+                    (int) (logo.getWidth() * scale),
+                    (int) (logo.getHeight() * scale));
+            graphics.drawImage(logo,
+                    image.getWidth() / 2 - logo.getWidth() / 2,
+                    image.getHeight() / 2 - logo.getHeight() / 2,
+                    image.getWidth() / 2 + logo.getWidth() / 2,
+                    image.getHeight() / 2 + logo.getHeight() / 2,
+                    0, 0, logo.getWidth(), logo.getHeight(), null);
+        }
         LOG.info("Your QR-code was succesfully generated.");
         return image;
     }

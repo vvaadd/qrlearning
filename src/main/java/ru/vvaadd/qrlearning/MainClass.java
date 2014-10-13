@@ -24,7 +24,7 @@ public class MainClass {
 
     public static void main(String[] args) {
         QRModel model = new QRModel();
-        model.setLogoPath(logoFile);
+//        model.setLogoPath(logoFile);
         model.setBgimgPath(bgImg);
         model.setData(data);
         model.setSize(300);

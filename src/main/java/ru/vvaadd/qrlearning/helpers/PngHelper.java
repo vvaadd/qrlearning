@@ -7,6 +7,7 @@ import ru.vvaadd.qrlearning.models.QRModel;
 import ru.vvaadd.qrlearning.qrbuilders.QrCodeGenerator;
 import ru.vvaadd.qrlearning.renderers.IQRRenderer;
 import ru.vvaadd.qrlearning.utils.ImageUtils;
+import ru.vvaadd.qrlearning.utils.QRCodeChecker;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -22,6 +23,9 @@ public class PngHelper {
         BufferedImage qrImage = QrCodeGenerator.createQrImage(model, renderer);
         resimg.createGraphics();
         resimg.getGraphics().drawImage(qrImage, 0, 0, null);
+
+        boolean check = QRCodeChecker.isQRCodeCorrect(model.getData(), resimg);
+        LOG.info("Check result is {}", check);
 
         ImageUtils.writeQrCodeToFile(resimg, model.getType(), resultFile);
         LOG.info("done.");

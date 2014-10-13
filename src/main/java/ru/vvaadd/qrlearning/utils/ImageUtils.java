@@ -16,6 +16,9 @@ public class ImageUtils {
     private static final Logger LOG = LoggerFactory.getLogger(ImageUtils.class);
 
     public static BufferedImage getImageFromFile(String filename) throws IOException {
+        if(filename == null){
+            return null;
+        }
         return ImageIO.read(new File(filename));
     }
 
